@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+backend/node_modules/
+client/node_modules/
+
+# Environment Variables
+.env
+backend/.env
+client/.env
+
+# Build outputs
+dist/
+client/dist/
+build/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+
+# Editor sensitive files
+.vscode/
+.idea/
+.DS_Store
+
+# Misc
+uploads/
+backend/uploads/
