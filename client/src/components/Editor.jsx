@@ -7,7 +7,7 @@ import { ArrowLeft, Share2, CheckCircle, Users, History, MessageSquare, Download
 import { io } from 'socket.io-client';
 import TurndownService from 'turndown';
 
-const SOCKET_URL = 'http://localhost:5000';
+const SOCKET_URL = import.meta.env.VITE_SOCKET_URL;
 let socket;
 
 export default function Editor({ user }) {
