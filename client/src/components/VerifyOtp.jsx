@@ -34,7 +34,7 @@ export default function VerifyOtp() {
     <div className="flex items-center justify-center min-h-screen bg-slate-50 p-4">
       <div className="w-full max-w-md p-10 bg-white rounded-2xl border border-slate-200 shadow-[0_20px_50px_rgba(0,0,0,0.05)] text-center">
         <div className="flex items-center justify-center w-14 h-14 mx-auto mb-8 bg-blue-600 rounded-xl shadow-lg shadow-blue-100">
-            <CheckCircle className="w-7 h-7 text-white" />
+            <ShieldCheck className="w-7 h-7 text-white" />
         </div>
         <h1 className="text-4xl font-bold text-slate-900 mb-2 tracking-tight">Verify Identity</h1>
         <p className="text-slate-500 mb-10 font-medium leading-relaxed">We've sent a security code to your email. Enter it below to unlock your workspace.</p>
@@ -45,7 +45,7 @@ export default function VerifyOtp() {
           </div>
         )}
 
-        <form onSubmit={handleVerify} className="space-y-8">
+        <form onSubmit={handleSubmit} className="space-y-8">
           <div>
             <label className="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-4 px-1">Security Code</label>
             <input

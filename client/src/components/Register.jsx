@@ -47,12 +47,6 @@ export default function Register() {
           </div>
         )}
 
-        {msg && (
-          <div className="mb-8 p-4 bg-green-50 text-green-600 rounded-lg text-sm border border-green-100">
-            {msg}
-          </div>
-        )}
-
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
             <label className="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-2 px-1">Email Address</label>
@@ -71,6 +65,9 @@ export default function Register() {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              className="w-full px-4 py-3.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 placeholder:text-slate-400 focus:ring-4 focus:ring-blue-50 outline-none transition-all duration-200"
+              placeholder="••••••••"
+              required
             />
           </div>
           <div>
@@ -79,7 +76,7 @@ export default function Register() {
               type="password"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
-              className="w-full px-4 py-3.5 bg-navy-950 border border-slate-800 rounded-lg text-white placeholder:text-slate-600 focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 outline-none transition-all duration-200"
+              className="w-full px-4 py-3.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 placeholder:text-slate-400 focus:ring-4 focus:ring-blue-50 outline-none transition-all duration-200"
               placeholder="••••••••"
               required
             />
@@ -87,7 +84,7 @@ export default function Register() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-4 px-4 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-800 disabled:cursor-not-allowed text-white font-bold rounded-lg transition-all duration-200 shadow-lg shadow-blue-900/20 mt-4"
+            className="w-full py-4 px-4 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-300 disabled:cursor-not-allowed text-white font-bold rounded-lg transition-all duration-200 shadow-xl shadow-blue-100 mt-4"
           >
             {loading ? 'Creating Account...' : 'Continue'}
           </button>
