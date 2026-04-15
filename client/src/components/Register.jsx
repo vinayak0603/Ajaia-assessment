@@ -49,6 +49,17 @@ export default function Register() {
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
+            <label className="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-2 px-1">Full Name</label>
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="w-full px-4 py-3.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 placeholder:text-slate-400 focus:ring-4 focus:ring-blue-50 outline-none transition-all duration-200"
+              placeholder="John Doe"
+              required
+            />
+          </div>
+          <div>
             <label className="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-2 px-1">Email Address</label>
             <input
               type="email"
