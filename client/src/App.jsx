@@ -5,6 +5,7 @@ import Register from './components/Register';
 import VerifyOtp from './components/VerifyOtp';
 import Dashboard from './components/Dashboard';
 import Editor from './components/Editor';
+import RenderNotice from './components/RenderNotice';
 
 function App() {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')) || null);
@@ -24,6 +25,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-blue-500/10">
+        <RenderNotice />
         <Routes>
           <Route path="/login" element={!user ? <Login onLogin={login} /> : <Navigate to="/" />} />
           <Route path="/register" element={!user ? <Register /> : <Navigate to="/" />} />

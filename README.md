@@ -1,49 +1,82 @@
-# Ajaia assessment - Lightweight Collaborative Editor
+# Ajaia - Lightweight Collaborative Editor
 
-A lightweight, full-stack collaborative document editor inspired by Google Docs, designed for speed and productivity on shared work.
+A lightweight, full-stack collaborative document editor inspired by Google Docs, built for speed and seamless shared work.
 
-## Core Features
-1. **Rich Document Editing**: Powered by Quill, featuring text formatting (bold, italic, lists, headers).
-2. **File Imports**: Seamlessly upload and instantly parse `.txt`, `.md`, and **`.docx`** files into your workspace directly using backend parsing capabilities via `mammoth`.
-3. **Collaboration & Sharing**: Share documents by simply typing a username. Real-time active presence indicators track who is actively reading the document using `socket.io`.
-4. **Commenting & Versioning**: Leave document-level comments in a sidebar, and view auto-saved version history. Previous states of documents can be restored directly from the UI.
-5. **Exporting Tools**: Download your live documents as native Markdown files or export them cleanly to PDF format.
+## 🚀 Live Product
+- **Frontend**: [https://ajaia-docs-rho.vercel.app/](https://ajaia-docs-rho.vercel.app/)
+- **Backend**: [https://ajaia-backend.onrender.com/](https://ajaia-backend.onrender.com/)
 
-## Architecture & Prioritization Notes
-- **State Management & Communication**: We opted for a localized, reactive React context to maximize speed. While Operational Transformation (OT - like Y.js) is standard for raw multiplayer text manipulation, the required timebox prioritized shipping *functional* features over conflict resolution protocols. To fulfill the collaboration requirements, we utilized `Socket.IO` rooms for real-time presence awareness instead of real-time text sync, allowing users to coordinate editing.
-- **Persistence**: MongoDB was chosen for flexibility. It natively supports simple array updates perfect for `versions` and `comments` lists within documents without heavily relational JOIN overheads.
-- **Auto-Save Methodology**: Implemented a debounced auto-save in the Editor React component (triggering 1.5 seconds after typing). This drastically reduces the number of RESTful `PUT` calls to the Express backend compared to every keystroke, keeping the Node Event Loop lightweight.
-- **File Ingress**: `.docx` reading is isolated in a separate Node endpoint leveraging `multer` + `mammoth`, keeping arbitrary and heavy XML-parsing memory off the active frontend client. 
+---
 
-## Run Instructions
+## 🛠️ Tech Stack
+- **Frontend**: React (Vite), Tailwind CSS v4, Lucide Icons
+- **Backend**: Node.js, Express
+- **Database**: MongoDB (Mongoose)
+- **Real-time**: Socket.IO
+- **Email**: Brevo API (for OTP verification)
+- **Editor**: React-Quill
 
-You will need `Node.js` installed. 
+---
 
-### 1. Setup Backend
-Open a terminal in the `/backend` directory:
+## 💻 Local Setup & Run
+
+### Prerequisites
+- Node.js (v18+)
+- MongoDB (Local or Atlas)
+
+### 1. Clone & Install
 ```bash
+# Clone the repo
+git clone <your-repo-url>
+cd Ajaia
+
+# Install Backend dependencies
 cd backend
 npm install
-# Set up environment variables
-echo "MONGO_URI=your_mongo_connection_string" > .env 
+
+# Install Frontend dependencies
+cd ../client
+npm install
+```
+
+### 2. Environment Variables
+
+**Backend (`/backend/.env`)**:
+```env
+PORT=5000
+MONGO_URI=your_mongodb_uri
+JWT_SECRET=your_jwt_secret
+BREVO_API_KEY=your_brevo_key
+EMAIL_FROM=your_email@example.com
+```
+
+**Frontend (`/client/.env.development`)**:
+```env
+VITE_API_URL=http://localhost:5000/api
+VITE_SOCKET_URL=http://localhost:5000
+```
+
+### 3. Run the App
+
+**Start Backend**:
+```bash
+cd backend
 npm start
 ```
-*Note: A sandbox MongoDB cluster might have been left running in the `.env` context for reviewability.*
 
-### 2. Setup Client
-Open a terminal in the `/client` directory:
+**Start Frontend**:
 ```bash
 cd client
-npm install
 npm run dev
 ```
 
-The application will be running at `http://localhost:5173`.
+The app will be available at `http://localhost:5173`.
 
-## Automated Testing
-The API comes with an extensive Jest suite to validate models and routes.
-Inside the `/backend` directory run:
+---
+
+## 🧪 Testing
+The backend includes a Jest test suite.
 ```bash
-npm run test
+cd backend
+npm test
 ```
-*This utilizes `mongodb-memory-server` to mock the remote database offline seamlessly.*
